@@ -21,6 +21,11 @@ lodash.mixin({
         return result
     },
     unflat(input) {
+        /*
+        * Unflat an object
+        * The code reference can be found at:
+        * https://github.com/lodash/lodash/issues/2240#issuecomment-418820848
+        */
         return FP.flow([
             FP.toPairs,
             FP.reduce((output, [key, value]) => lodash.set(output, key, value), {}),
@@ -35,6 +40,12 @@ lodash.mixin({
         }
     },
     decode(obj) {
+        /*
+        * Safely decode an object
+        * Prevents errors by returning an empty value if this occurs
+        * The code reference can be found at:
+        * https://gist.github.com/gucheen/12b90451f04733078d7f
+        */
         const result = lodash.attempt(JSON.parse.bind(null, obj))
         if (lodash.isError(result)) {
             return;
