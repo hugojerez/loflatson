@@ -23,7 +23,7 @@ lodash.mixin({
     unflat(input) {
         return FP.flow([
             FP.toPairs,
-            FP.reduce((output, [key, value]) => _.set(output, key, value), {}),
+            FP.reduce((output, [key, value]) => lodash.set(output, key, value), {}),
         ])(input);
     },
     encode(obj) {
