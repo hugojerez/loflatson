@@ -23,8 +23,8 @@ lodash.mixin({
     unflat(input) {
         return FP.flow([
             FP.toPairs,
-            FP.reduce((cum, [key, value]) => _.set(cum, key, value), {}),
-        ]);
+            FP.reduce((output, [key, value]) => _.set(output, key, value), {}),
+        ])(input);
     },
     encode(obj) {
         const result = lodash.attempt(JSON.stringify.bind(null, obj))
