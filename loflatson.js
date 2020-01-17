@@ -29,7 +29,7 @@ lodash.mixin({
     encode(obj) {
         const result = lodash.attempt(JSON.stringify.bind(null, obj))
         if (lodash.isError(result)) {
-            return undefined
+            return;
         } else {
             return result
         }
@@ -37,7 +37,7 @@ lodash.mixin({
     decode(obj) {
         const result = lodash.attempt(JSON.parse.bind(null, obj))
         if (lodash.isError(result)) {
-            return undefined
+            return;
         } else {
             return result
         }
