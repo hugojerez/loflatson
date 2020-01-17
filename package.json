@@ -1,0 +1,22 @@
+{
+  "name": "loflatson",
+  "version": "1.0.0",
+  "description": "Lodash + Flatten + Unflatten + JSON safe coding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugojerez/loflatson.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hugojerez/loflatson/issues"
+  },
+  "homepage": "https://github.com/hugojerez/loflatson#readme",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
