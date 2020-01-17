@@ -9,7 +9,7 @@ loflatson.flat({a:{a:1},b:2,c:3})
 // output { 'a.a': 1, b: 2, c: 3 }
 
 loflatson.unflat({ 'a.a': 1, b: 2, c: 3 })
-// output { 'a.a': 1, b: 2, c: 3 }
+// output { a: { a: 1 }, b: 2, c: 3 }
 
 loflatson.decode('{"badJSONSyntax":"abcde')
 // output
