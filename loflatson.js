@@ -28,7 +28,7 @@ lodash.mixin({
         */
         return FP.flow([
             FP.toPairs,
-            FP.reduce((output, [key, value]) => lodash.set(output, String(key), value), {}),
+            FP.reduce((output, [key, value]) => lodash.setWith(output, key, value, Object), {}),
         ])(input);
     },
     encode(obj) {
