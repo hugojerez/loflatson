@@ -53,10 +53,23 @@ lodash.mixin({
             return result
         }
     },
-    queryString(obj){
-        return Object.keys(obj).map((key) => {
-            return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
-        }).join('&');
+    queryString(obj) {
+        const lodash = require('loflatson')
+        obj = lodash.flat(obj)
+        string = "";
+
+        for (const index in obj) {
+
+            let key = String(index)
+                .split('.')
+                .join('][')
+                .replace(/(\[.*)$/g, "$1]")
+                .replace(/^([^\[])*]/g, "$1")
+
+            string += `${key}=${obj[index]}&`
+
+        }
+        return string;
     }
 })
 module.exports = lodash
