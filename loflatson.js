@@ -59,11 +59,11 @@ lodash.mixin({
 
         for (const index in obj) {
 
-            let key = String(index)
+            let key = String('.' + index + '.')
                 .split('.')
                 .join('][')
-                .replace(/(\[.*)$/g, "$1]")
-                .replace(/^([^\[])*]/g, "$1")
+                .replace(/\]\[(.*?)\]/, '$1')
+                .replace(/.$/, '')
 
             string += `${key}=${obj[index]}&`
 
