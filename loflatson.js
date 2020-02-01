@@ -54,7 +54,6 @@ lodash.mixin({
         }
     },
     queryString(obj) {
-        const lodash = require('loflatson')
         obj = lodash.flat(obj)
         string = "";
 
