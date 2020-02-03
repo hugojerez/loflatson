@@ -55,7 +55,7 @@ lodash.mixin({
     },
     queryString(obj) {
         // https://stackoverflow.com/questions/1714786/query-string-encoding-of-a-javascript-object
-        serialize = function (obj, prefix) {
+        const serialize = function (obj, prefix) {
             var str = [],
                 p;
             for (p in obj) {
@@ -64,7 +64,7 @@ lodash.mixin({
                         v = obj[p];
                     str.push((v !== null && typeof v === "object") ?
                         serialize(v, k) :
-                        (k) + "=" + encodeURIComponent(v));
+                        encodeURIComponent(k) + "=" + encodeURIComponent(v));
                 }
             }
             return str.join("&");
