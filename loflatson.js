@@ -54,21 +54,22 @@ lodash.mixin({
         }
     },
     queryString(obj) {
-        obj = lodash.flat(obj)
-        string = "";
-
-        for (const index in obj) {
-
-            let key = String('.' + index + '.')
-                .split('.')
-                .join('][')
-                .replace(/\]\[(.*?)\]/, '$1')
-                .replace(/.$/, '')
-
-            string += `${key}=${obj[index]}&`
-
+        // https://stackoverflow.com/questions/1714786/query-string-encoding-of-a-javascript-object
+        serialize = function (obj, prefix) {
+            var str = [],
+                p;
+            for (p in obj) {
+                if (obj.hasOwnProperty(p)) {
+                    var k = prefix ? prefix + "[" + p + "]" : p,
+                        v = obj[p];
+                    str.push((v !== null && typeof v === "object") ?
+                        serialize(v, k) :
+                        (k) + "=" + encodeURIComponent(v));
+                }
+            }
+            return str.join("&");
         }
-        return string;
+        return serialize(obj)
     }
 })
 module.exports = lodash
